@@ -1,0 +1,148 @@
+  [1m[36m (158.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (224.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTarefas (20170830201214)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tarefas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "descricao" text, "status" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170830201214"]]
+  [1m[35m (110.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-30 17:28:16 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/vendor_ruby/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 20ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tarefas" for 127.0.0.1 at 2017-08-30 17:28:49 -0300
+Processing by TarefasController#index as HTML
+  [1m[35mTarefa Load (0.2ms)[0m  SELECT "tarefas".* FROM "tarefas"
+  Rendered tarefas/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 633ms (Views: 631.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/scaffolds.self-5c089f0a61699f270d63696452ac7274ca4202b63ef89f76e6b6d252eb42cc0e.css?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/tarefas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/tarefas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2017-08-30 17:28:50 -0300
+
+
+Started GET "/tarefas/new" for 127.0.0.1 at 2017-08-30 17:29:01 -0300
+Processing by TarefasController#new as HTML
+  Rendered tarefas/_form.html.erb (20.1ms)
+  Rendered tarefas/new.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 53ms (Views: 46.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/tarefas" for 127.0.0.1 at 2017-08-30 17:29:54 -0300
+Processing by TarefasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+nQ+tUS+vHRuOHsZ9FD6LrcVtWP/Suts6SzsDvRB5rwClNGyfAXaIroVLDZuF1qw+5beXkejFE5K6TJ0pwAYqg==", "tarefa"=>{"titulo"=>"Estudando ruby", "descricao"=>"estudando ruby on rails", "status"=>"Fazendo"}, "commit"=>"Create Tarefa"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tarefas" ("titulo", "descricao", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["titulo", "Estudando ruby"], ["descricao", "estudando ruby on rails"], ["status", "Fazendo"], ["created_at", "2017-08-30 20:29:54.455143"], ["updated_at", "2017-08-30 20:29:54.455143"]]
+  [1m[36m (205.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tarefas/1
+Completed 302 Found in 212ms (ActiveRecord: 206.1ms)
+
+
+Started GET "/tarefas/1" for 127.0.0.1 at 2017-08-30 17:29:54 -0300
+Processing by TarefasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTarefa Load (0.2ms)[0m  SELECT  "tarefas".* FROM "tarefas" WHERE "tarefas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tarefas/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 30ms (Views: 22.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tarefas" for 127.0.0.1 at 2017-08-30 17:29:59 -0300
+Processing by TarefasController#index as HTML
+  [1m[36mTarefa Load (0.2ms)[0m  [1mSELECT "tarefas".* FROM "tarefas"[0m
+  Rendered tarefas/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tarefas/new" for 127.0.0.1 at 2017-08-30 17:33:01 -0300
+Processing by TarefasController#new as HTML
+  Rendered tarefas/_form.html.erb (3.0ms)
+  Rendered tarefas/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tarefas" for 127.0.0.1 at 2017-08-30 17:33:21 -0300
+Processing by TarefasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PfQ9GNZeVMFAevImexJYVkhbNgz7F+VhUVC0izF58S7FFNIf7uUyl5RXpQnhVfjIBNhdMUP+GkPylWrxYjgPOA==", "tarefa"=>{"titulo"=>"Testando select", "descricao"=>"estudando ruby on rails", "status"=>"Fazendo"}, "commit"=>"Create Tarefa"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tarefas" ("titulo", "descricao", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["titulo", "Testando select"], ["descricao", "estudando ruby on rails"], ["status", "Fazendo"], ["created_at", "2017-08-30 20:33:21.751949"], ["updated_at", "2017-08-30 20:33:21.751949"]]
+  [1m[35m (207.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/tarefas/2
+Completed 302 Found in 211ms (ActiveRecord: 207.9ms)
+
+
+Started GET "/tarefas/2" for 127.0.0.1 at 2017-08-30 17:33:21 -0300
+Processing by TarefasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTarefa Load (0.1ms)[0m  [1mSELECT  "tarefas".* FROM "tarefas" WHERE "tarefas"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered tarefas/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tarefas" for 127.0.0.1 at 2017-08-30 17:33:25 -0300
+Processing by TarefasController#index as HTML
+  [1m[35mTarefa Load (0.2ms)[0m  SELECT "tarefas".* FROM "tarefas"
+  Rendered tarefas/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/tarefas/1" for 127.0.0.1 at 2017-08-30 17:33:33 -0300
+Processing by TarefasController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3mb7YH0jnr71dSpVosJ4jgY7ZassYJMoHuHx+JA9UnsmhhRnRZj46CFYfXo4hdgQSrgOlpSJbAq9JC+Cw3ysbQ==", "id"=>"1"}
+  [1m[36mTarefa Load (0.1ms)[0m  [1mSELECT  "tarefas".* FROM "tarefas" WHERE "tarefas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "tarefas" WHERE "tarefas"."id" = ?[0m  [["id", 1]]
+  [1m[35m (95.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/tarefas
+Completed 302 Found in 98ms (ActiveRecord: 95.9ms)
+
+
+Started GET "/tarefas" for 127.0.0.1 at 2017-08-30 17:33:33 -0300
+Processing by TarefasController#index as HTML
+  [1m[36mTarefa Load (0.2ms)[0m  [1mSELECT "tarefas".* FROM "tarefas"[0m
+  Rendered tarefas/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 14ms (Views: 13.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/tarefas/2" for 127.0.0.1 at 2017-08-30 17:33:37 -0300
+Processing by TarefasController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7WsYv+1rXjLA5umvBJPGNMOJtW9wUGBceuIxeZ104hkVi/e41dA4ZBTLvoCe1GaqjwreUsi5n37ZJ+8DzjUcDw==", "id"=>"2"}
+  [1m[35mTarefa Load (0.1ms)[0m  SELECT  "tarefas".* FROM "tarefas" WHERE "tarefas"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "tarefas" WHERE "tarefas"."id" = ?  [["id", 2]]
+  [1m[36m (135.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tarefas
+Completed 302 Found in 138ms (ActiveRecord: 136.0ms)
+
+
+Started GET "/tarefas" for 127.0.0.1 at 2017-08-30 17:33:37 -0300
+Processing by TarefasController#index as HTML
+  [1m[35mTarefa Load (0.1ms)[0m  SELECT "tarefas".* FROM "tarefas"
+  Rendered tarefas/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.1ms)
